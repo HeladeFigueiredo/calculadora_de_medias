@@ -6,32 +6,32 @@ const imgReprovado = '<img scr="./images/reprovado.png" alt="Emoji decepcionado"
 const atividades = [];
 const notas = [];
 
-const spanAprovado = '<span class="resultado aprovado">Aprovado</span>'
-const spanReprovado = '<span class="resultado reprovado">Reprovado</span>'
+// const spanAprovado = '<span class="resultado aprovado">Aprovado</span>'
+// const spanReprovado = '<span class="resultado reprovado">Reprovado</span>'
 
-const notaMinima = parseFloat(prompt("Digite a nota mínima:"));
+// const notaMinima = parseFloat(prompt("Digite a nota mínima:"));
 
 let linhas = '';
 
 form.addEventListener('submit', function(e){
     e.preventDefault();
 
-    adicionarLinha();
+    adicionaLinha();
     atualizaTabela();
     atualizaMediaFinal();
 })
 
-function adicionarLinha(){
+function adicionaLinha(){
     const inputNomeAtividade = document.getElementById('nome-atividade');
-    const inputNotaAtividade = parseFloat(document.getElementById('nota-atividade'));
+    const inputNotaAtividade = (document.getElementById('nota-atividade');
 
     if (atividades.includes(inputNomeAtividade.value)) {
         alert(`A atividade ${inputNomeAtividade} já foi inserida`);
     } else {
         atividades.push(inputNomeAtividade.value);
-        notas.push(inputNotaAtividade);
+        notas.push(parseFloat(inputNotaAtividade.value));
     
-        let linha = '<tr>'
+        let linha = '<tr>';
         linha += `<td>${inputNomeAtividade.value}</td>`;
         linha += `<td>${inputNotaAtividade.value}</td>`;
         linha += `<td>${inputNotaAtividade.value >= notaMinima ? imgAprovado : imgReprovado}</td>`;
