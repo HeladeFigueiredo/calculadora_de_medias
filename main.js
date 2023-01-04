@@ -1,17 +1,13 @@
 const form = document.getElementById('form-atividade');
-
-const imgAprovado = '<img scr="./images/aprovado.png" alt="Emoji celebrando" />';
-const imgReprovado = '<img scr="./images/reprovado.png" alt="Emoji decepcionado" />';
-
+const imgAprovado = '<img src="./images/aprovado.png" alt="Emoji celebrando">';
+const imgReprovado = '<img src="./images/reprovado.png" alt="Emoji decepcionado">';
 const atividades = [];
 const notas = [];
-
-const spanAprovado = '<span class="resultado aprovado">Aprovado</span>'
-const spanReprovado = '<span class="resultado reprovado">Reprovado</span>'
-
+const spanAprovado = '<span class="resultado aprovado">Aprovado</span>';
+const spanReprovado = '<span class="resultado reprovado">Reprovado</span>';
 const notaMinima = parseFloat(prompt("Digite a nota mínima:"));
-
 let linhas = '';
+
 
 form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -21,12 +17,14 @@ form.addEventListener('submit', function(e){
     atualizaMediaFinal();
 })
 
+
+// FUNÇÃO PARA ADICIONAR LINHA A TABELA
 function adicionaLinha(){
     const inputNomeAtividade = document.getElementById('nome-atividade');
-    const inputNotaAtividade = (document.getElementById('nota-atividade');
+    const inputNotaAtividade = document.getElementById('nota-atividade');
 
     if (atividades.includes(inputNomeAtividade.value)) {
-        alert(`A atividade ${inputNomeAtividade} já foi inserida`);
+        alert(`A atividade: ${inputNomeAtividade.value} já foi inserida`);
     } else {
         atividades.push(inputNomeAtividade.value);
         notas.push(parseFloat(inputNotaAtividade.value));
@@ -44,11 +42,15 @@ function adicionaLinha(){
     inputNotaAtividade.value = '';
 }
 
+
+// FUNÇÃO PARA ATUALIZAR TABELA
 function atualizaTabela(){
     const corpoTabela = document.querySelector('tbody');
     corpoTabela.innerHTML = linhas;
 }
 
+
+// FUNÇÃO PARA ATUALIZAR A MÉDIA FINAL|
 function atualizaMediaFinal() {
     const mediaFinal = calculaMediaFinal();
 
@@ -56,6 +58,8 @@ function atualizaMediaFinal() {
     document.getElementById('media-final-resultado').innerHTML = mediaFinal >= notaMinima ? spanAprovado : spanReprovado;
 }
 
+
+// FUNÇÃO PARA CALCULAR A MÉDIA FINAL
 function calculaMediaFinal(){
     let somaDasNotas = 0;
 
